@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg_obras"
+    android:orientation="vertical"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="35dp"
+    tools:context="com.studiobt.descobrindomundoscomferreiragular.ReadActivity">
+
+    <ListView
+        android:id="@+id/list_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/ic_panel_obras"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/bt_pronto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estou pronto" />
+</LinearLayout>

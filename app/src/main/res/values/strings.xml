@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">O Universo Enzimático</string>
+
+    <string name="pcsenior">fonts/pcsenior.ttf</string>
+    <string name="chlorinap">fonts/chlorinap.ttf</string>
+    <string name="impact">fonts/impact.ttf</string>
+    <string name="metal_gear">fonts/metal_gear.ttf</string>
+    <string name="techno_overload">fonts/techno_overload.ttf</string>
+    <string name="supersonic">fonts/supersonic.ttf</string>
+
+    <string name="title_activity_obras">ObrasActivity</string>
+    <string name="powers">Energias: </string>
+    <string name="loja_suprimentos">Loja de Suprimentos</string>
+    <string name="energias">Energias: </string>
+</resources>
