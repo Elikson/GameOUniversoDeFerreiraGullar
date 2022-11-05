@@ -28,6 +28,8 @@ public class MainActivity extends Activity implements Drawer {
     private boolean actionTouch;
     public MediaPlayer mp = null;
 
+    ManagerObras managerObras;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,8 @@ public class MainActivity extends Activity implements Drawer {
         //trapaca();
         welcome();
         verifyChoicedSong();
+
+        addObras();
     }
 
     public void welcome(){
@@ -61,7 +65,7 @@ public class MainActivity extends Activity implements Drawer {
 
         if(welcome){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Bem vindo ao jogo 'O Universo de Ferreira Gullar'! Este jogo foi desenvolvido por mim, Elikson Bastos, seu objetivo principal é apresentar o autor Ferreira Gullar e suas obras, você pode iniciar o jogo espacial tocando no botão 'Iniciar Missão'. Para obter recursos como naves novas e escudo para ficar melhor no jogo anterior, você vai precisar de 'Energias', e a úncia forma de obter energias é tocando no botão 'Obter Energias', você irá ler algumas obras do autor Ferreira Gullar e responder um quiz sobre a obra lida, assim você irá ganhar energias, para então comprar equipamentos tocando no botão 'Loja'. Há um painel com seus dados do jogo nesta tela principal, Acima há um botão onde você pode desativar a música. Isso é tudo, divirta-se!");
+            builder.setMessage("Bem vindo ao jogo 'O Universo de Enzimático'!");
             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -127,7 +131,11 @@ public class MainActivity extends Activity implements Drawer {
                 startActivity(intent);
             }
             if(isTouch(x,y,3)){
-                Intent intent = new Intent(this, ObrasActivity.class);
+//                Intent intent = new Intent(this, ObrasActivity.class);
+//                startActivity(intent);
+
+                Intent intent = new Intent(this, ReadActivity.class);
+                intent.putExtra("id", 0);
                 startActivity(intent);
             }
 
@@ -147,6 +155,53 @@ public class MainActivity extends Activity implements Drawer {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(Cts.PREF_MUNITION, 500);
         editor.apply();
+    }
+
+    public void addObras(){
+        managerObras = new ManagerObras();
+        managerObras.removeAll();
+
+        ArrayList<Question> questions;
+
+        questions = new ArrayList<>();
+        questions.add(new Question("A proteína é a principal constituição das reações enzimáticas?", true));
+        questions.add(new Question("A fibra é a principal constituição das reações enzimáticas?", false));
+        questions.add(new Question("O Carboidrato é a principal constituição das reações enzimáticas?", false));
+        questions.add(new Question("O neurotransmissor é à região da enzima capaz de interagir com o Substrato?", true));
+        questions.add(new Question("O sítio ativo é à região da enzima capaz de interagir com o Substrato?", false));
+        questions.add(new Question("Pepsina é uma enzima?", false));
+        questions.add(new Question("Galactose é uma enzima?", true));
+        questions.add(new Question("As enzimas atuam aumentando a velocidade de uma reação?", true));
+        questions.add(new Question("As enzimas atuam apenas degradando substâncias?", false));
+        questions.add(new Question("As enzimas atuam retardando a velocidade de uma reação?", false));
+        questions.add(new Question("As enzimas biocatalizadoras de indução de reações químicas reconhecem seus substratos através da forma tridimensional das moléculas?", true));
+        questions.add(new Question("As enzimas biocatalizadoras de indução de reações químicas reconhecem seus substratos através da concentração de minerais?", false));
+        questions.add(new Question("As enzimas não atuam como catalisadores. Geralmente, elas são lipídeos, embora algumas moléculas de DNA também atuem como enzimas?", false));
+        questions.add(new Question("As enzimas diminuem a energia de ativação de uma reação,que é a quantidade de energia necessária para que uma reação ocorra. Elas realizam isso ligando-se a um substrato e segurando-o de forma a permitir que a reação aconteça de maneira mais eficiente?", true));
+
+        managerObras.addObra("Reações enzimáticas", "•Composição da enzima\n" +
+                "A maioria das enzimas, são proteínas, sendo formadas, portanto, por aminoácidos. A composição de aminoácidos dessas biomoléculas define a estrutura tridimensional que ela irá adquirir.\n" +
+                "\n" +
+                "•Meio de interação \n" +
+                "Para catalizar uma reação, uma enzima irá pegar (se ligar) uma ou mais moléculas de reagentes. Essas moléculas são os substratos das enzimas.\n" +
+                "\n" +
+                "Em algumas reações, um substrato é quebrado em vários produtos. Em outras, dois substratos se unem para formar uma molécula maior ou trocar pedaços. De fato, em qualquer tipo de reação biológica que você possa pensar, há provavelmente uma enzima para acelerá-la!\n" +
+                "\n" +
+                "A parte da enzima em que o substrato se conecta é chamado de sítio de ativação (uma vez que é aí onde ocorre a \"ação\" catalítica).\n" +
+                "•Exemplicação\n" +
+                "Catalase: decompõe o peróxido de hidrogênio;\n" +
+                "DNA polimerase ou Transcriptase Reversa: catalisa a duplicação do DNA;\n" +
+                "Lactase: facilita a hidrólise da lactose;\n" +
+                "Lipase: facilita a digestão de lipídios;\n" +
+                "Protease: atuam sobre as proteínas;\n" +
+                "Urease: facilita a degradação da ureia;\n" +
+                "\n" +
+                "•Função \n" +
+                "As enzimas aceleram as reações de forma seletiva, sendo, portanto, catalisadores muito específicos. As enzimas são capazes de acelerar uma reação mediante a diminuição da energia de ativação, ou seja, elas reduzem a quantidade de energia que deve ser adicionada para que uma reação tenha início.\n" +
+                "\n" +
+                "•Reconhecimento de substratos\n" +
+                "A parte da enzima em que o substrato se conecta é chamado de sítio de ativação (uma vez que é aí onde ocorre a \"ação\" catalítica). O substrato entra no sítio de ativação da enzima, formando o complexo enzima-substrato. A reação então ocorre, convertendo o substrato em produtos e formando um complexo produtos e enzima\n", questions);
+
     }
 
     public void moveSpace(){
